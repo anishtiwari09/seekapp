@@ -273,7 +273,8 @@
   background-color: #2b3844;
   color: white;
 }
-.darkMode .searchBoxContainer input::placeholder {
+.darkMode .searchBoxContainer input::placeholder,
+.darkMode .searchBoxContainer input {
   color: white;
 }
 .darkMode .filterRegion {
