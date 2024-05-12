@@ -25,5 +25,37 @@ body {
   width: 100%;
   height: 100%;
 }
+.flex {
+  display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.items-center {
+  align-items: center;
+}
 
-/* design */
+.justify-center {
+  justify-content: center;
+}
+.grow {
+  flex-grow: 1;
+}
+.flex-col {
+  flex-direction: column;
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.w-full {
+  width: 100%;
+}
+.h-full {
+  height: 100%;
+}
+.inline-block {
+  display: inline-block;
+}
