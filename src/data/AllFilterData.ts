@@ -1,3 +1,8 @@
+export interface AllFilterRegionInterface {
+  name: string;
+  value: string;
+}
+
 export default [
   {
     name: "Select Region",

@@ -1,19 +1,23 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Header from "./Component/Header/Header";
-import AllDataContext from "./context/AllDataContext";
+import AllDataContext, { CountryInterface } from "./context/AllDataContext";
 import AllPageRoutes from "./Router/AllPageRoutes";
 import { getAllCountryData } from "./api";
-import AllFilterData from "./data/AllFilterData";
+import AllFilterData, { AllFilterRegionInterface } from "./data/AllFilterData";
 import { useLocation } from "react-router-dom";
 const delay = 1000;
 function App() {
-  const [allData, setAllData] = useState([]);
-  const [inputSearch, setInputSearch] = useState("");
+  const [allData, setAllData] = useState<CountryInterface[] | []>([]);
+  const [inputSearch, setInputSearch] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const delayRef = useRef<any>(null);
-  const [filter, setFilter] = useState(AllFilterData[0]);
-  const [afterFilterData, setAfterFilterData] = useState([]);
+  const [filter, setFilter] = useState<AllFilterRegionInterface>(
+    AllFilterData[0]
+  );
+  const [afterFilterData, setAfterFilterData] = useState<
+    CountryInterface[] | []
+  >([]);
   const [darkMode, setDarkMode] = useState(false);
   const { pathname } = useLocation();
   const fetchData = async () => {
@@ -55,7 +59,7 @@ function App() {
       applySearchFilter(value);
     }, delay);
   };
-  const handleFilter = (selectdFilter: object): void => {
+  const handleFilter = (selectdFilter: AllFilterRegionInterface): void => {
     setInputSearch("");
     setFilter(selectdFilter);
     if (!selectdFilter?.value) {

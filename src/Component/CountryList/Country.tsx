@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { CountryInterface } from "../../context/type";
 
-export default function Country({ country }) {
+export default function Country({ country }: { country: CountryInterface }) {
   return (
     <Link className="countryBox" to={"/details/" + country?.id}>
       <div className="country_flag">
