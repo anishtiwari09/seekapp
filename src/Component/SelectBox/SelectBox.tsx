@@ -4,7 +4,9 @@ import AllDataContext from "../../context/AllDataContext";
 
 export default function SelectBox({ modePath }: { modePath: string }) {
   const [open, setOpen] = useState(false);
-  const { handleFilter, filter } = useContext(AllDataContext);
+  const allDataContextValue = useContext(AllDataContext);
+  const handleFilter = allDataContextValue!.handleFilter;
+  const filter = allDataContextValue!.filter;
   const handleClick = (value: object) => {
     setOpen(false);
     handleFilter(value);

@@ -2,14 +2,16 @@ import { useContext } from "react";
 import AllDataContext from "../../context/AllDataContext";
 
 export default function Header() {
-  const { darkMode, setDarkMode } = useContext(AllDataContext);
+  const { darkMode, setDarkMode } = useContext(AllDataContext) ?? {};
   return (
     <div className="header_container">
       <h1 className="title">Where in the world?</h1>
       <div className="toggleDarkModeContainer">
         <button
           className="toggleBackgroundBtn"
-          onClick={() => setDarkMode(!darkMode)}
+          onClick={() =>
+            typeof setDarkMode === "function" && setDarkMode(!darkMode)
+          }
         >
           <img
             src={`/images/icons/${

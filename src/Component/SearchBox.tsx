@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import AllDataContext from "../context/AllDataContext";
 
 export default function SearchBox({ modePath }: { modePath: string }) {
-  const { inputSearch, handleInputSearch } = useContext(AllDataContext);
+  const { inputSearch, handleInputSearch } = useContext(AllDataContext) ?? {};
   return (
     <div className="flex items-center searchBoxContainer">
       <div>
@@ -13,7 +13,8 @@ export default function SearchBox({ modePath }: { modePath: string }) {
           placeholder="Search for a country…"
           value={inputSearch}
           onChange={(e) => {
-            handleInputSearch(e.target.value);
+            typeof handleInputSearch === "function" &&
+              handleInputSearch(e.target.value);
           }}
         />
       </div>

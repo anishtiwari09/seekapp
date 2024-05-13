@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Header from "./Component/Header/Header";
-import AllDataContext, { CountryInterface } from "./context/AllDataContext";
+
 import AllPageRoutes from "./Router/AllPageRoutes";
 import { getAllCountryData } from "./api";
 import AllFilterData, { AllFilterRegionInterface } from "./data/AllFilterData";
 import { useLocation } from "react-router-dom";
+import { CountryInterface } from "./context/type";
+import AllDataContext from "./context/AllDataContext";
 const delay = 1000;
 function App() {
   const [allData, setAllData] = useState<CountryInterface[] | []>([]);

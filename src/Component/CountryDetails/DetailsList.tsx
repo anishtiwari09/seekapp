@@ -1,15 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AllDataContext from "../../context/AllDataContext";
 import { useParams } from "react-router-dom";
+import { CountryInterface } from "../../context/type";
 
 export default function DetailsList() {
-  const { allData } = useContext(AllDataContext);
-  const [borderCountry, setBorderCountry] = useState([]);
-  const { id } = useParams();
+  const { allData } = useContext(AllDataContext) ?? { allData: [] };
+  const [borderCountry, setBorderCountry] = useState<string[]>([]);
+  const { id } = useParams<{ id: string }>() ?? { id: undefined };
 
-  let country = allData[id];
+  let country: CountryInterface | null =
+    id !== undefined ? allData[Number(id)] : null;
 
-  const findBorderCountry = (selectedCountry) => {
+  const findBorderCountry = (selectedCountry: CountryInterface) => {
     let borders = selectedCountry?.borders || [];
     let bordersCountry = [];
     for (let item of borders) {
@@ -25,7 +27,7 @@ export default function DetailsList() {
     setBorderCountry(bordersCountry);
   };
   useEffect(() => {
-    if (country) findBorderCountry(country);
+    if (country !== null) findBorderCountry(country);
   }, [id]);
   if (!country) return <h1>Invalid url</h1>;
   console.log(country);

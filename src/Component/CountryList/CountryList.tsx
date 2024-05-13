@@ -5,7 +5,7 @@ import AllCountry from "./AllCountry";
 import AllDataContext from "../../context/AllDataContext";
 
 export default function CountryList() {
-  const { darkMode } = useContext(AllDataContext);
+  const { darkMode } = useContext(AllDataContext) ?? { darkMode: false };
   return (
     <div className="countryListContainer commonContryContainer">
       <div className="flex justify-between filterContainerBox">

@@ -4,7 +4,14 @@ export interface CountryInterface {
   name: {
     common: string;
     official: string;
+    nativeName: {
+      [key: string]: {
+        common: string;
+        official: string;
+      };
+    };
   };
+
   flags: {
     svg: string;
     png: string;
@@ -14,6 +21,18 @@ export interface CountryInterface {
   region: string;
   capital: string[];
   id: number;
+  borders: [];
+  cca3: string;
+  subregion: string;
+  currencies: {
+    [key: string]: {
+      name: string;
+    };
+  };
+  languages: {
+    [key: string]: string;
+  };
+  tld: string[];
 }
 type InputSearchType = string;
 export interface AllDataInterface {
