@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import AllDataContext from "../../context/AllDataContext";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { CountryInterface } from "../../context/type";
 
 export default function DetailsList() {
@@ -29,7 +29,14 @@ export default function DetailsList() {
   useEffect(() => {
     if (country !== null) findBorderCountry(country);
   }, [id]);
-  if (!country) return <h1>Invalid url</h1>;
+  if (!country) {
+    return (
+      <>
+        <h1>Invalid url</h1>
+        <Navigate to={"/"} />
+      </>
+    );
+  }
   console.log(country);
   return (
     <div className="flex countryDetailsContainer ">
